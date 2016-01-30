@@ -345,8 +345,12 @@ void Input_Pengumuman(NodeP* &awal, NodeP* &akhir)
 				fflush(stdin);
 				getline(cin, baru->keterangan);
 				
-				cout<<"ID : ";
-				cin>>baru->id;
+				int id = 1;
+				if(akhir != NULL) 
+					id = akhir->png.id + 1;
+					
+				cout<<"ID : "<<id;
+				baru->id = id;
 				
 				sisip_belakang(awal, akhir, *baru);
 }
@@ -564,10 +568,116 @@ void sample_kegiatan(NodeK* &awal, NodeK* &akhir) {
 	sisip_belakang(awal, akhir,*baru);
 
 }
+
+void manage_pengumuman(NodeP* &Pawal, NodeP* &Pakhir) 
+{
+	
+	int menu;
+	
+	do {
+		int i = 0;
+		system("cls");
+		gotoxy(0,0);cout<<"|    Manage    | 1. Tambah Pengumuman\t2. Hapus Pengumuman\t | Menu Pilihan"<<endl;
+		gotoxy(0,1);cout<<"|  Pengumuman  | 3. Kembali\t                                 | ";
+		
+		NodeP *bantu = Pawal;
+		gotoxy(1,3);cout<<" ----------------------------------------------------------------------------------------";
+		gotoxy(1,4);cout<<"|  Id  |	  Judul         |    Keterangan                                           |";
+		gotoxy(1,5);cout<<" ----------------------------------------------------------------------------------------";
+		
+		while(bantu != NULL)
+		{
+			gotoxy(1,6+i);cout<<"|      |	                |                                                         |";
+			gotoxy(3, 6+i);cout<<bantu->png.id;
+			gotoxy(10, 6+i);cout<<bantu->png.judul;
+			gotoxy(34, 6+i);cout<<bantu->png.keterangan;
+			
+			bantu = bantu->next;
+			
+			i+=1;
+		}
+		gotoxy(1,6+i);cout<<" ----------------------------------------------------------------------------------------";
+		
+		gotoxy(67, 1);cin>>menu;
+		switch(menu) {
+			case 1:
+				system("cls");
+				Input_Pengumuman(Pawal, Pakhir);
+				break;
+				
+			case 2:
+				
+				break;
+		}
+	
+	} while(menu != 3);
+	
+}
+
+void manage_kegiatan()
+{
+	cout<<"Manage Kegiatan"<<endl;	
+	
+}
+
+void manage_lost_found()
+{
+	cout<<"Manage Lost & Found"<<endl;	
+	
+}
+
+void manage_info_autodebet()
+{
+	cout<<"Manage Info Autodebet"<<endl;
+}
+
+
+
+void Tampil_Admin(NodeIK*  &awal, NodeIK* &akhir, NodeP* &Pawal, NodeP* &Pakhir, NodeK* &Kawal, NodeK* &Kakhir, NodeIM* &Mawal, NodeIM* &Makhir) 
+{
+	int menu;
+		
+	do {
+		system("cls");
+	
+		cout<<"Administrator"<<endl;
+		cout<<"---------------------------------------"<<endl;
+		cout<<"1. Pengumuman"<<endl;
+		cout<<"2. Kegiatan"<<endl;
+		cout<<"3. Lost & Found"<<endl;
+		cout<<"4. Info Autodebet"<<endl;
+		cout<<"5. Kembali"<<endl;
+		cout<<"Pilih Menu : ";
+		cin>>menu;
+		
+		system("cls");
+		switch(menu) {
+			case 1:
+				manage_pengumuman(Pawal, Pakhir);
+				
+				break;
+			case 2:
+				manage_kegiatan();
+				
+				break;
+			
+			case 3:
+				manage_lost_found();
+				
+				break;
+			case 4:
+				manage_info_autodebet();
+				
+				break;
+		}
+	} while (menu != 5);
+	
+}
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
-	//login();
+	
 	NodeIK *awal  = NULL,
 		   *akhir = NULL;
 	NodeP *Pawal = NULL,
@@ -576,14 +686,13 @@ int main(int argc, char** argv) {
 		  *Kakhir = NULL;
      NodeIM *Mawal = NULL,
 		  *Makhir = NULL;
-		  
-		  
 	
 	int menu;
 	sample_IKehilangan(awal, akhir);
 	sample_pengumuman(Pawal, Pakhir);
 	sample_kegiatan(Kawal, Kakhir);
 	sample_menemukan(Mawal, Makhir);
+	
 	
 	do {
 		system("cls");
@@ -599,9 +708,9 @@ int main(int argc, char** argv) {
 		gotoxy(68,1);cin>>menu;
 		system("cls");
 		switch(menu) {
-		
 			case 6:
 				login();
+				Tampil_Admin(awal, akhir, Pawal, Pakhir, Kawal, Kakhir, Mawal, Makhir);
 				break;
 			case 2:
 				Input_IKehilangan(awal, akhir);

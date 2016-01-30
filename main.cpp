@@ -87,6 +87,19 @@ struct NodeIM {
 	NodeIM *prev;
 };
 
+struct IAutodebet {
+	string tahun;
+	Tanggal tanggal;
+	string Keterangan;
+	int periode;
+};
+
+struct NodeIA {
+	IAutodebet info;
+	NodeIA *next;
+	NodeIA *prev;
+};
+
 void sisi_depan(NodeIK* &awal, NodeIK* &akhir, IKehilangan IK) {
 	NodeIK *baru = new NodeIK;
 	baru->info = IK;
@@ -124,6 +137,23 @@ void sisip_belakang(NodeIM* &awal, NodeIM* &akhir, IMenemukan IM) {
 	NodeIM *baru = new NodeIM;
 	
 	baru->info = IM;
+	baru->next = NULL;
+	
+	if(awal == NULL) {
+		baru->prev = NULL;
+		awal = baru;
+	} else {
+		baru->prev = akhir;
+		akhir->next = baru;
+	}
+	
+	akhir = baru;
+}
+
+void sisip_belakang(NodeIA* &awal, NodeIA* &akhir, IAutodebet IA) {
+	NodeIA *baru = new NodeIA;
+	
+	baru->info = IA;
 	baru->next = NULL;
 	
 	if(awal == NULL) {
@@ -244,6 +274,20 @@ void Tampil_IMenemukan(NodeIM *node)
 		i += 1;
 	}
 }
+void Tampil_IAutodebet(NodeIA *node)
+{
+	gotoxy(0, 21);cout<<"JADWAL AUTODEBET";
+	
+	
+	int i = 0;
+	NodeIA *bantu = node;
+	while(bantu != NULL) {
+		gotoxy(0, 23+i);cout<<bantu->info.tahun<<" - "<<bantu->info.tanggal. tgl<<endl;	
+		bantu = bantu->next;
+		
+		i += 1;
+	}
+}
 
 void Input_IKehilangan(NodeIK* &awal, NodeIK* &akhir)
 {
@@ -307,6 +351,24 @@ void Input_IMenemukan(NodeIM* &awal, NodeIM* &akhir)
 	cout<<"Tahun : ";
 	cin>>baru->tanggal.thn;
 			
+	cout<<"Keterangan : "<<endl;
+	fflush(stdin);
+	getline(cin, baru->Keterangan);
+				
+				
+	sisip_belakang(awal, akhir, *baru);
+}
+
+void Input_IAutodebet(NodeIA* &awal, NodeIA* &akhir)
+{
+	IAutodebet *baru = new IAutodebet;
+	
+	cout<<"Tahun : ";
+	cin>>baru->tanggal.thn;
+	
+    cout<<"Tanggal : ";
+	cin>>baru->tanggal.tgl;
+    		
 	cout<<"Keterangan : "<<endl;
 	fflush(stdin);
 	getline(cin, baru->Keterangan);
@@ -564,6 +626,17 @@ void sample_kegiatan(NodeK* &awal, NodeK* &akhir) {
 	sisip_belakang(awal, akhir,*baru);
 
 }
+
+void sample_autodebet(NodeIA* &awal, NodeIA* &akhir) {
+	IAutodebet *baru = new IAutodebet;
+    baru->tahun= "2014/2015";
+	baru->Keterangan = "besok libur";
+	sisip_belakang(awal, akhir,*baru);
+	
+	
+	
+
+}
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
@@ -576,7 +649,8 @@ int main(int argc, char** argv) {
 		  *Kakhir = NULL;
      NodeIM *Mawal = NULL,
 		  *Makhir = NULL;
-		  
+	 NodeIA *Aawal = NULL,
+		  *Aakhir = NULL;	  
 		  
 	
 	int menu;
@@ -584,7 +658,7 @@ int main(int argc, char** argv) {
 	sample_pengumuman(Pawal, Pakhir);
 	sample_kegiatan(Kawal, Kakhir);
 	sample_menemukan(Mawal, Makhir);
-	
+	sample_autodebet(Aawal, Aakhir);
 	do {
 		system("cls");
 		
@@ -596,6 +670,7 @@ int main(int argc, char** argv) {
 		Tampil_Pengumuman(Pawal);
 		Tampil_kegiatan(Kawal);
 		Tampil_IMenemukan(Mawal);
+		Tampil_IAutodebet(Aawal);
 		gotoxy(68,1);cin>>menu;
 		system("cls");
 		switch(menu) {
@@ -617,6 +692,10 @@ int main(int argc, char** argv) {
                  break;
             case 1:
                  Input_IMenemukan(Mawal,Makhir);
+                 getch();
+                 break;
+            case 4:
+                 Input_IAutodebet(Aawal,Aakhir);
                  getch();
                  break;
 		}

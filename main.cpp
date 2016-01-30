@@ -588,8 +588,8 @@ int main(int argc, char** argv) {
 	do {
 		system("cls");
 		
-		gotoxy(0,0);cout<<"|  INFO  | 1. Menemukan Barang\t2. Kehilangan\t3. Pengumuman\t| Menu Pilihan"<<endl;
-		gotoxy(0,1);cout<<"| UNIKOM | 4. Info Autodebet\t5. Kegiatan\t6. Admin\t| ";
+		gotoxy(0,0);cout<<"|  MENU  | 1. Menemukan Barang\t2. Kehilangan\t3. Pengumuman\t| Menu Pilihan"<<endl;
+		gotoxy(0,1);cout<<"| UTAMA  | 4. Info Autodebet\t5. Kegiatan\t6. Admin\t| ";
 		
 		
 		Tampil_IKehilangan(awal);

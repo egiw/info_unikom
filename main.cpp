@@ -116,6 +116,22 @@ void sisi_depan(NodeIK* &awal, NodeIK* &akhir, IKehilangan IK) {
 	awal = baru;
 }
 
+void sisip_depan(NodeP* &awal, NodeP* &akhir, Pengumuman png) {
+	NodeP *baru = new NodeP;
+	baru->png = png;
+	baru->prev = NULL;
+	
+	if(awal == NULL) {
+		akhir = NULL;
+		baru->next = NULL;
+	} else {
+		baru->next = awal;
+		awal->prev = baru;
+	}
+	
+	awal = baru;
+}
+
 void sisip_belakang(NodeIK* &awal, NodeIK* &akhir, IKehilangan IK) {
 	NodeIK *baru = new NodeIK;
 	
@@ -370,7 +386,7 @@ void Input_IAutodebet(NodeIA* &awal, NodeIA* &akhir)
     cout<<"-----------------------"<<endl<<endl;
 	
 	cout<<"Tahun Angkatan  : ";
-	cin>>baru->tanggal;
+	cin>>baru->tahun;
 	
     cout<<"Tanggal \t: ";
 	cin>>baru->tanggal;
@@ -420,7 +436,7 @@ void Input_Pengumuman(NodeP* &awal, NodeP* &akhir)
 				cout<<"ID : "<<id;
 				baru->id = id;
 				cout<<endl<<"Tekan Sembarang Tombol Untuk Lanjut!";
-				sisip_belakang(awal, akhir, *baru);
+				sisip_depan(awal, akhir, *baru);
 }
 
 void Tampil_Pengumuman(NodeP *node)
@@ -430,7 +446,7 @@ void Tampil_Pengumuman(NodeP *node)
 	
 	int i = 0;
 	NodeP *bantu = node;
-	while(bantu != NULL) {
+	while(bantu != NULL && i < 5) {
 		gotoxy(44, 14+i);cout<<bantu->png.judul<<endl;	
 		bantu = bantu->next;
 		
@@ -776,8 +792,8 @@ int main(int argc, char** argv) {
 	do {
 		system("cls");
 		
-		gotoxy(0,0);cout<<"| MENU   | 1. Menemukan Barang\t2. Kehilangan\t3. Pengumuman\t| Menu Pilihan"<<endl;
-		gotoxy(0,1);cout<<"| UTAMA  | 4. Info Autodebet\t5. Kegiatan\t6. Admin\t| ";
+		gotoxy(0,0);cout<<"|  INFO   | 1. Menemukan \t2. Kehilangan\t3. Pengumuman\t| Menu Pilihan"<<endl;
+		gotoxy(0,1);cout<<"| UNIKOM  | 4. Info Autodebet\t5. Kegiatan\t6. Admin\t| ";
 		
 		
 		Tampil_IKehilangan(awal);
@@ -797,7 +813,9 @@ int main(int argc, char** argv) {
 				getch();
 				break;
 			case 3:
-				cout<<"Silakan Login Administrator untuk menu ini"<<endl<<endl;
+                 
+				cout<<"Pengumuman"<<endl;
+	            cout<<"----------"<<endl<<endl;
 				cout<<"Tekan Sembarang Tombol Untuk Lanjut!";
 				getch();
 				break;

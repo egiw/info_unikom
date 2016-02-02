@@ -89,7 +89,7 @@ struct NodeIM {
 
 struct IAutodebet {
 	string tahun;
-	Tanggal tanggal;
+	string tanggal;
 	string Keterangan;
 	int periode;
 };
@@ -262,13 +262,13 @@ void Tampil_IKehilangan(NodeIK *node)
 
 void Tampil_IMenemukan(NodeIM *node)
 {
-	gotoxy(30, 3);cout<<"INFO MENEMUKAN BARANG";
+	gotoxy(44, 3);cout<<"INFO MENEMUKAN BARANG";
 	
 	
 	int i = 0;
 	NodeIM *bantu = node;
 	while(bantu != NULL) {
-		gotoxy(30, 5+i);cout<<bantu->info.Nama<<" - "<<bantu->info.Barang<<endl;	
+		gotoxy(44, 5+i);cout<<bantu->info.Nama<<" - "<<bantu->info.Barang<<endl;	
 		bantu = bantu->next;
 		
 		i += 1;
@@ -282,7 +282,7 @@ void Tampil_IAutodebet(NodeIA *node)
 	int i = 0;
 	NodeIA *bantu = node;
 	while(bantu != NULL) {
-		gotoxy(0, 23+i);cout<<bantu->info.tahun<<" - "<<bantu->info.tanggal. tgl<<endl;	
+		gotoxy(0, 23+i);cout<<bantu->info.tahun<<" - "<<bantu->info.tanggal<<endl;	
 		bantu = bantu->next;
 		
 		i += 1;
@@ -363,11 +363,11 @@ void Input_IAutodebet(NodeIA* &awal, NodeIA* &akhir)
 {
 	IAutodebet *baru = new IAutodebet;
 	
-	cout<<"Tahun : ";
-	cin>>baru->tanggal.thn;
+	cout<<"Tahun Angkatan: ";
+	cin>>baru->tanggal;
 	
     cout<<"Tanggal : ";
-	cin>>baru->tanggal.tgl;
+	cin>>baru->tanggal;
     		
 	cout<<"Keterangan : "<<endl;
 	fflush(stdin);
@@ -419,13 +419,13 @@ void Input_Pengumuman(NodeP* &awal, NodeP* &akhir)
 
 void Tampil_Pengumuman(NodeP *node)
 {
-	gotoxy(30, 12);cout<<"PENGUMUMAN";
+	gotoxy(44, 12);cout<<"PENGUMUMAN";
 	
 	
 	int i = 0;
 	NodeP *bantu = node;
 	while(bantu != NULL) {
-		gotoxy(30, 14+i);cout<<bantu->png.judul<<endl;	
+		gotoxy(44, 14+i);cout<<bantu->png.judul<<endl;	
 		bantu = bantu->next;
 		
 		i += 1;
@@ -453,7 +453,7 @@ void sample_IKehilangan(NodeIK* &awal, NodeIK* &akhir) {
 	baru->Nama = "Raka Adit";
 	baru->Alamat = "Jalan remed No.13/107";
 	baru->Telp = "0811222222";
-	baru->Barang = "Rambut";
+	baru->Barang = "KTM";
 	baru->Keterangan = "Terakhir ada di kepala";
 	sisip_belakang(awal, akhir,*baru);
 	
@@ -477,71 +477,71 @@ void sample_IKehilangan(NodeIK* &awal, NodeIK* &akhir) {
 
 void sample_menemukan(NodeIM* &awal, NodeIM* &akhir) {
 	IMenemukan *baru = new IMenemukan;
-	baru->Nama = "Egi Soleh Hasdi";
-	baru->Alamat = "Jalan H.Nawawi No.13/107";
-	baru->Telp = "08118711382";
+	baru->Nama = "Andhika";
+	baru->Alamat = "Jalan Ahmad Yani No.1";
+	baru->Telp = "085244554311";
 	baru->Barang = "Laptop";
-	baru->Keterangan = "Terakhir ada di kelas";
+	baru->Keterangan = "menemukan laptop di kelas";
 	sisip_belakang(awal, akhir,*baru);
 	
 	baru = new IMenemukan;
-	baru->Nama = "H Mutha Arif";
+	baru->Nama = "Habib";
 	baru->Alamat = "Perum Mekarsari";
-	baru->Telp = "085211555518";
+	baru->Telp = "085284325400";
 	baru->Barang = "Uang";
-	baru->Keterangan = "Terakhir ada di kantong";
+	baru->Keterangan = "menemukan uang dekat mushola";
 	sisip_belakang(awal, akhir,*baru);
 	
 	baru = new IMenemukan;
-	baru->Nama = "Raka Adit";
+	baru->Nama = "Aditya";
 	baru->Alamat = "Jalan remed No.13/107";
-	baru->Telp = "0811222222";
-	baru->Barang = "Rambut";
-	baru->Keterangan = "Terakhir ada di kepala";
+	baru->Telp = "08111231211";
+	baru->Barang = "KTM";
+	baru->Keterangan = "menemukan KTM di parkiran";
 	sisip_belakang(awal, akhir,*baru);
 	
 	baru = new IMenemukan;
-	baru->Nama = "Maya Wulan";
+	baru->Nama = "Wulandari";
 	baru->Alamat = "Jalan Haji aji No.13/07";
-	baru->Telp = "08118711382";
+	baru->Telp = "08119807766";
 	baru->Barang = "HP";
-	baru->Keterangan = "Terakhir ada di baju";
+	baru->Keterangan = "menemukan HP di kelas";
 	sisip_belakang(awal, akhir,*baru);
   
     baru = new IMenemukan;
-	baru->Nama = "Satria W";
+	baru->Nama = "Agung A";
 	baru->Alamat = "Jalan wawi No.13/107";
 	baru->Telp = "0811999999";
 	baru->Barang = "Char Dota";
-	baru->Keterangan = "Terakhir ada di steam";
+	baru->Keterangan = "ada di steam";
 	sisip_belakang(awal, akhir,*baru);
 
 }
 
 void sample_pengumuman(NodeP* &awal, NodeP* &akhir) {
 	Pengumuman *baru = new Pengumuman;
-	baru->judul = "libur";
-	baru->keterangan = "besok libur";
+	baru->judul = "Libur Setelah UAS Semester Ganjil";
+	baru->keterangan = "awal perkuliahan tanggal 15 februari";
 	baru->id = 1;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "Sangatsu kokonoka";
-	baru->keterangan = "1 litre of tears";
+	baru->judul = "Pelatihan Be Logix ";
+	baru->keterangan = "dimulai tanggal 1 Februari 2016, bagi peserta harap berkumpul di depan ruang Lab untuk masing-masing bidang jam 8.15. ";
 	baru->id = 2;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "boom boom";
-	baru->keterangan = "nice people";
+	baru->judul = "Pengumuman Bidang Seminar Skripsi";
+	baru->keterangan = "9 Desember 2015 Kegiatan Seminar Skripsi (sesuai jadwal Seminar yang sudah dishare) DITIADAKAN ";
 	baru->id = 3;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "autodebet";
-	baru->keterangan = "besok bayar";
+	baru->judul = "Jadwal Pengambilan KSM dan KHS";
+	baru->keterangan = "Rabu, 28 Oktober 2015";
 	baru->id = 4;
 	sisip_belakang(awal, akhir,*baru);
   
-    baru->judul = "kuliah";
-	baru->keterangan = "atur";
+    baru->judul = "Pembersihan Pangkalan Data Mahasiswa";
+	baru->keterangan = "Mohon mengecek daftar mahasiswa yang akan di unggah di situs if.unikom.ac.id";
 	baru->id = 5;
 	sisip_belakang(awal, akhir,*baru);
 
@@ -604,28 +604,28 @@ void Tampil_kegiatan(NodeK *node)
 
 void sample_kegiatan(NodeK* &awal, NodeK* &akhir) {
 	kegiatan *baru = new kegiatan;
-	baru->judul = "libur";
-	baru->keterangan = "besok libur";
+	baru->judul = "Kegiatan Pengabdian Kepada Masyarakat 2015";
+	baru->keterangan = "Program Studi Teknik Informatika melakukan kegiatan pengabdian kepada masyarakat pada hari selasa (17/11/2015)";
 	baru->id = 1;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "Sangatsu kokonoka";
-	baru->keterangan = "1 litre of tears";
+	baru->judul = "Seminar I AM With Game";
+	baru->keterangan = "Senin, 27 April 2015 bertempat di Auditorium Unikom (The Miracle) kegiatan ini telah dilaksanakan dengan  jumlah peserta 137 orang yang seluruhnya merupakan mahasiswa umum.";
 	baru->id = 2;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "boom boom";
-	baru->keterangan = "nice people";
+	baru->judul = "Seminar Security dan Kompetisi Hacking";
+	baru->keterangan = "Seminar yang dilaksanakan di Auditorium MIRACLE UNIKOM pada kamis (28/Mei/2015)";
 	baru->id = 3;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "autodebet";
-	baru->keterangan = "besok bayar";
+	baru->judul = "Latihan Dasar Kepemimpinan Organisasi";
+	baru->keterangan = "Kegiatan ini dilakukan pada hari Sabtu, 17 Januari 2015 yang bertempat di Dago Highland.";
 	baru->id = 4;
 	sisip_belakang(awal, akhir,*baru);
   
-    baru->judul = "kuliah";
-	baru->keterangan = "atur";
+    baru->judul = "Kegiatan Mentoring Agama Islam";
+	baru->keterangan = "Kegiatan ini dilaksanakan selama dua hari yaitu Sabtu 27 Desember 2014 dan Minggu 28 Desember 2014 di Masjid Darul Hikam dengan Jumlah 319 Peserta.";
 	baru->id = 5;
 	sisip_belakang(awal, akhir,*baru);
 
@@ -633,8 +633,9 @@ void sample_kegiatan(NodeK* &awal, NodeK* &akhir) {
 
 void sample_autodebet(NodeIA* &awal, NodeIA* &akhir) {
 	IAutodebet *baru = new IAutodebet;
-    baru->tahun= "2014/2015";
-	baru->Keterangan = "besok libur";
+    baru->tahun= "2015/2016";
+	baru->Keterangan = "Angsuran Tahap 1";
+	baru->tanggal="2016-02-09";
 	sisip_belakang(awal, akhir,*baru);
 	
 	
@@ -767,7 +768,7 @@ int main(int argc, char** argv) {
 	do {
 		system("cls");
 		
-		gotoxy(0,0);cout<<"|  MENU  | 1. Menemukan Barang\t2. Kehilangan\t3. Pengumuman\t| Menu Pilihan"<<endl;
+		gotoxy(0,0);cout<<"| MENU   | 1. Menemukan Barang\t2. Kehilangan\t3. Pengumuman\t| Menu Pilihan"<<endl;
 		gotoxy(0,1);cout<<"| UTAMA  | 4. Info Autodebet\t5. Kegiatan\t6. Admin\t| ";
 		
 		

@@ -292,7 +292,9 @@ void Tampil_IAutodebet(NodeIA *node)
 void Input_IKehilangan(NodeIK* &awal, NodeIK* &akhir)
 {
 	IKehilangan *baru = new IKehilangan;
-			
+	
+    cout<<"Input Kehilangan Barang"<<endl;
+    cout<<"-----------------------"<<endl<<endl;		
 	cout<<"Nama    \t: ";
 	fflush(stdin);
 	getline(cin, baru->Nama);
@@ -327,7 +329,9 @@ void Input_IKehilangan(NodeIK* &awal, NodeIK* &akhir)
 void Input_IMenemukan(NodeIM* &awal, NodeIM* &akhir)
 {
 	IMenemukan *baru = new IMenemukan;
-			
+	cout<<"Input Menemukan Barang"<<endl;
+    cout<<"-----------------------"<<endl<<endl;
+    		
 	cout<<"Nama    \t: ";
 	fflush(stdin);
 	getline(cin, baru->Nama);
@@ -362,6 +366,8 @@ void Input_IMenemukan(NodeIM* &awal, NodeIM* &akhir)
 void Input_IAutodebet(NodeIA* &awal, NodeIA* &akhir)
 {
 	IAutodebet *baru = new IAutodebet;
+	cout<<"Input Jadwal Autodebet"<<endl;
+    cout<<"-----------------------"<<endl<<endl;
 	
 	cout<<"Tahun Angkatan  : ";
 	cin>>baru->tanggal;
@@ -567,7 +573,8 @@ void sisip_belakang(NodeK* &awal, NodeK* &akhir,kegiatan kgt) {
 void Input_kegiatan(NodeK* &awal, NodeK* &akhir)
 {
 	kegiatan *baru = new kegiatan;
-			
+                cout<<"Input Kegiatan"<<endl;
+                cout<<"-----------------------"<<endl<<endl;   			
 	
 				cout<<"Judul \t\t: ";
 				fflush(stdin);

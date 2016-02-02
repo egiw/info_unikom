@@ -116,6 +116,22 @@ void sisi_depan(NodeIK* &awal, NodeIK* &akhir, IKehilangan IK) {
 	awal = baru;
 }
 
+void sisip_depan(NodeP* &awal, NodeP* &akhir, Pengumuman png) {
+	NodeP *baru = new NodeP;
+	baru->png = png;
+	baru->prev = NULL;
+	
+	if(awal == NULL) {
+		akhir = NULL;
+		baru->next = NULL;
+	} else {
+		baru->next = awal;
+		awal->prev = baru;
+	}
+	
+	awal = baru;
+}
+
 void sisip_belakang(NodeIK* &awal, NodeIK* &akhir, IKehilangan IK) {
 	NodeIK *baru = new NodeIK;
 	
@@ -414,7 +430,7 @@ void Input_Pengumuman(NodeP* &awal, NodeP* &akhir)
 				cout<<"ID : "<<id;
 				baru->id = id;
 				
-				sisip_belakang(awal, akhir, *baru);
+				sisip_depan(awal, akhir, *baru);
 }
 
 void Tampil_Pengumuman(NodeP *node)
@@ -424,7 +440,7 @@ void Tampil_Pengumuman(NodeP *node)
 	
 	int i = 0;
 	NodeP *bantu = node;
-	while(bantu != NULL) {
+	while(bantu != NULL && i < 5) {
 		gotoxy(44, 14+i);cout<<bantu->png.judul<<endl;	
 		bantu = bantu->next;
 		

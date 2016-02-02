@@ -293,33 +293,33 @@ void Input_IKehilangan(NodeIK* &awal, NodeIK* &akhir)
 {
 	IKehilangan *baru = new IKehilangan;
 			
-	cout<<"Nama : ";
+	cout<<"Nama    \t: ";
 	fflush(stdin);
 	getline(cin, baru->Nama);
 				
-	cout<<"Alamat : ";
+	cout<<"Alamat    \t: ";
 	fflush(stdin);
 	getline(cin, baru->Alamat);
 				
-	cout<<"No. Telepon : ";
+	cout<<"No. Telepon     : ";
 	fflush(stdin);
 	getline(cin, baru->Telp);
 				
-	cout<<"Barang : ";
+	cout<<"Barang \t\t: ";
 	fflush(stdin);
 	getline(cin, baru->Barang);
 				
-	cout<<"Tanggal : ";
+	cout<<"Tanggal   \t: ";
 	cin>>baru->tanggal.tgl;
-	cout<<"Bulan : ";
+	cout<<"Bulan \t\t: ";
 	cin>>baru->tanggal.bln;
-	cout<<"Tahun : ";
+	cout<<"Tahun \t\t: ";
 	cin>>baru->tanggal.thn;
 			
-	cout<<"Keterangan : "<<endl;
+	cout<<"Keterangan      : ";
 	fflush(stdin);
 	getline(cin, baru->Keterangan);
-				
+	cout<<endl<<"Tekan Sembarang Tombol Untuk Lanjut!";			
 				
 	sisip_belakang(awal, akhir, *baru);
 }
@@ -328,33 +328,33 @@ void Input_IMenemukan(NodeIM* &awal, NodeIM* &akhir)
 {
 	IMenemukan *baru = new IMenemukan;
 			
-	cout<<"Nama : ";
+	cout<<"Nama    \t: ";
 	fflush(stdin);
 	getline(cin, baru->Nama);
 				
-	cout<<"Alamat : ";
+	cout<<"Alamat    \t: ";
 	fflush(stdin);
 	getline(cin, baru->Alamat);
 				
-	cout<<"No. Telepon : ";
+	cout<<"No. Telepon     : ";
 	fflush(stdin);
 	getline(cin, baru->Telp);
 				
-	cout<<"Barang : ";
+	cout<<"Barang \t\t: ";
 	fflush(stdin);
 	getline(cin, baru->Barang);
 				
-	cout<<"Tanggal : ";
+	cout<<"Tanggal   \t: ";
 	cin>>baru->tanggal.tgl;
-	cout<<"Bulan : ";
+	cout<<"Bulan \t\t: ";
 	cin>>baru->tanggal.bln;
-	cout<<"Tahun : ";
+	cout<<"Tahun \t\t: ";
 	cin>>baru->tanggal.thn;
 			
-	cout<<"Keterangan : "<<endl;
+	cout<<"Keterangan      : ";
 	fflush(stdin);
 	getline(cin, baru->Keterangan);
-				
+	cout<<endl<<"Tekan Sembarang Tombol Untuk Lanjut!";			
 				
 	sisip_belakang(awal, akhir, *baru);
 }
@@ -363,16 +363,16 @@ void Input_IAutodebet(NodeIA* &awal, NodeIA* &akhir)
 {
 	IAutodebet *baru = new IAutodebet;
 	
-	cout<<"Tahun Angkatan: ";
+	cout<<"Tahun Angkatan  : ";
 	cin>>baru->tanggal;
 	
-    cout<<"Tanggal : ";
+    cout<<"Tanggal \t: ";
 	cin>>baru->tanggal;
     		
-	cout<<"Keterangan : "<<endl;
+	cout<<"Keterangan \t: ";
 	fflush(stdin);
 	getline(cin, baru->Keterangan);
-				
+	cout<<endl<<"Tekan Sembarang Tombol Untuk Lanjut!";			
 				
 	sisip_belakang(awal, akhir, *baru);
 }
@@ -413,7 +413,7 @@ void Input_Pengumuman(NodeP* &awal, NodeP* &akhir)
 					
 				cout<<"ID : "<<id;
 				baru->id = id;
-				
+				cout<<endl<<"Tekan Sembarang Tombol Untuk Lanjut!";
 				sisip_belakang(awal, akhir, *baru);
 }
 
@@ -520,28 +520,28 @@ void sample_menemukan(NodeIM* &awal, NodeIM* &akhir) {
 
 void sample_pengumuman(NodeP* &awal, NodeP* &akhir) {
 	Pengumuman *baru = new Pengumuman;
-	baru->judul = "Libur Setelah UAS Semester Ganjil";
+	baru->judul = "Libur Setelah UAS";
 	baru->keterangan = "awal perkuliahan tanggal 15 februari";
 	baru->id = 1;
 	sisip_belakang(awal, akhir,*baru);
 	
 	baru->judul = "Pelatihan Be Logix ";
-	baru->keterangan = "dimulai tanggal 1 Februari 2016, bagi peserta harap berkumpul di depan ruang Lab untuk masing-masing bidang jam 8.15. ";
+	baru->keterangan = "dimulai tanggal 1 Februari 2016";
 	baru->id = 2;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "Pengumuman Bidang Seminar Skripsi";
-	baru->keterangan = "9 Desember 2015 Kegiatan Seminar Skripsi (sesuai jadwal Seminar yang sudah dishare) DITIADAKAN ";
+	baru->judul = "Seminar Skripsi";
+	baru->keterangan = "9 Desember 2015 Seminar Skripsi DITIADAKAN ";
 	baru->id = 3;
 	sisip_belakang(awal, akhir,*baru);
 	
-	baru->judul = "Jadwal Pengambilan KSM dan KHS";
+	baru->judul = "Pengambilan KSM";
 	baru->keterangan = "Rabu, 28 Oktober 2015";
 	baru->id = 4;
 	sisip_belakang(awal, akhir,*baru);
   
-    baru->judul = "Pembersihan Pangkalan Data Mahasiswa";
-	baru->keterangan = "Mohon mengecek daftar mahasiswa yang akan di unggah di situs if.unikom.ac.id";
+    baru->judul = "Data Mahasiswa";
+	baru->keterangan = "Mohon cek daftar mahasiswa di situs unikom";
 	baru->id = 5;
 	sisip_belakang(awal, akhir,*baru);
 
@@ -569,20 +569,21 @@ void Input_kegiatan(NodeK* &awal, NodeK* &akhir)
 	kegiatan *baru = new kegiatan;
 			
 	
-				cout<<"Judul : ";
+				cout<<"Judul \t\t: ";
 				fflush(stdin);
 				getline(cin, baru->judul);
 				
-				cout<<"Keterangan : ";
+				cout<<"Keterangan \t: ";
 				fflush(stdin);
 				getline(cin, baru->keterangan);
 				
-				cout<<"Tanggal : ";
+				cout<<"Tanggal \t: ";
 				fflush(stdin);
 				getline(cin, baru->tanggal);
 				
-				cout<<"ID : ";
+				cout<<"ID \t\t: ";
 				cin>>baru->id;
+				cout<<endl<<"Tekan Sembarang Tombol Untuk Lanjut!";
 				
 				sisip_belakang(awal, akhir, *baru);
 }
@@ -668,7 +669,7 @@ void sample_autodebet(NodeIA* &awal, NodeIA* &akhir) {
 			
 			i+=1;
 		}
-		gotoxy(1,6+i);cout<<" ----------------------------------------------------------------------------------------";
+		gotoxy(1,6+i);cout<<" -----------------------------------------------------------------------------";
 		
 		gotoxy(67, 1);cin>>menu;
 		switch(menu) {
@@ -780,32 +781,33 @@ int main(int argc, char** argv) {
 		gotoxy(68,1);cin>>menu;
 		system("cls");
 		switch(menu) {
-			case 6:
-				login();
-				Tampil_Admin(awal, akhir, Pawal, Pakhir, Kawal, Kakhir, Mawal, Makhir);
-				break;
+            case 1:
+                 Input_IMenemukan(Mawal,Makhir);
+                 getch();
+                 break;
 			case 2:
 				Input_IKehilangan(awal, akhir);
 				getch();
 				break;
 			case 3:
-				Input_Pengumuman(Pawal, Pakhir);
+				cout<<"Silakan Login Administrator untuk menu ini"<<endl<<endl;
+				cout<<"Tekan Sembarang Tombol Untuk Lanjut!";
 				getch();
 				break;
+			case 4:
+                 Input_IAutodebet(Aawal,Aakhir);
+                 getch();
+                 break;
 			case 5:
                  Input_kegiatan(Kawal, Kakhir);
                  getch();
                  break;
-            case 1:
-                 Input_IMenemukan(Mawal,Makhir);
-                 getch();
-                 break;
-            case 4:
-                 Input_IAutodebet(Aawal,Aakhir);
-                 getch();
-                 break;
+            case 6:
+				login();
+				Tampil_Admin(awal, akhir, Pawal, Pakhir, Kawal, Kakhir, Mawal, Makhir);
+				break;
 		}
-	} while(menu != 4);
+	} while(menu != 0);
 	
 	return EXIT_SUCCESS;
 }
